@@ -16,6 +16,9 @@
 html {
     scroll-behavior: smooth;
 }
+body {
+    background-color: antiquewhite;
+}
 a{
     color: inherit;
     text-decoration: none;
@@ -28,40 +31,41 @@ header{
     background-color: var(--background);
     z-index: 1000;
     
+    .name h1 {
+        color: var(--secondary);
+        display: inline;
+    }
+    .main {
+        display: inline;
+        margin-left: 50px;
+    }
+    .main a {
+        color: var(--secondary-text);
+        margin-right: 25px;
+        padding: 5px;
+        border-bottom: 2px solid transparent;
+        transition: 0.3s;
+    }
+    .main a:hover{
+        color: var(--primary);
+        border-bottom: 2px solid var(--primary);
+        transition: 0.3s;
+    }
+    .main ul {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+    }
+    .main li {
+        color: var(--secondary-text);
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+    .main li:hover {
+        color: var(--secondary);
+    }
 }
-.name h1 {
-    color: var(--secondary);
-    display: inline;
-}
-.main {
-    display: inline;
-    margin-left: 50px;
-}
-.main a {
-    color: var(--secondary-text);
-    margin-right: 25px;
-    padding: 5px;
-    border-bottom: 2px solid transparent;
-    transition: 0.3s;
-}
-.main a:hover{
-    color: var(--primary);
-    border-bottom: 2px solid var(--primary);
-    transition: 0.3s;
-}
-.main ul {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-}
-.main li {
-    color: var(--secondary-text);
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-.main li:hover {
-    color: var(--secondary);
-}
+
 section{
     padding: 80px 20px;
     border-bottom: 1px solid var(--border);
@@ -80,6 +84,8 @@ section h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    animation: slideup;
+    animation-duration: 1s;
 }
 #home h2{
     color: var(--secondary);
@@ -94,25 +100,41 @@ section h2 {
 #about {
     text-align: center;
     padding: 80px 20px;
+    animation: slide;
+    animation-duration: 1s;
+    margin: 30px 0px;
 }
 #about h2 {
     color: var(--secondary);
     font-size: 30px;    
+    margin-bottom: 50px;
 }
 #about p {
     color: var(--secondary-text);
-    /*margin-top: 15px;*/
     line-height: 1.6;
     max-width: 700px;
     margin: 15px auto;
 }
+.descript {
+    max-width: 700px;
+    margin: 25px auto;
+    padding: 25px 30px;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--secondary-text);
+    line-height: 1.6;
+}
 #skills {
     text-align: center;
     padding: 70px 20px;
+    animation: slideup;
+    animation-duration: 1s;
 }
 #skills h2 {
     color: var(--secondary);
     font-size: 30px;
+    margin-bottom: 50px;
 }
 #skills p {
     color: var(--secondary-text);
@@ -121,6 +143,8 @@ section h2 {
 #projects {
     text-align: center;
     padding: 70px 20px;
+    animation: slideup;
+    animation-duration: 1s;
 }
 #projects h2{
     color: var(--secondary);
@@ -167,36 +191,99 @@ section h2 {
 p {
     line-height: 1.6;
 }
-.skill {
-    color: var(--secondary-text);
-    background-color: var(--card);
-    border: 1px solid var(--border);
-    padding: 15px;
-    margin: 12px auto;
-    max-width: 400px;
-    border-radius: 8px;
+.threebox {
+    width: 100%;
+    text-align: center;
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: var(--secondary);
+    }
+    .box {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        list-style-type: none;
+        padding: 0;
+    }
+    .box > li {
+        position: relative;
+        width: 250px;
+        height: 150px;
+        transform-style: preserve-3d;
+        transition: transform 0.6s ease;
+    }
+    .box > li:hover {
+        transform: rotateY(180deg);
+    }
+    .box > li > div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border: 1px solid var(--border);
+        border-radius: 10px;
+
+        backface-visibility: hidden;
+    }
+    .front {
+        background-color: var(--accent);
+        color: var(--text);
+    }
+    .back {
+        transform: rotateY(180deg);
+        background-color: var(--card);
+        color: var(--text);
+    }
+    .back ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .back li {
+        margin: 5px 0;
+    }
 }
-.skill:hover {
-    border-color: var(--primary);
-    background-color: #261623dc ;                              
-    color: var(--secondary);
-    transform: translateY(-3px);
-    transition: 0.3s;
-}
+
 #journey {
     text-align: center;
     padding: 80px 20px;
+    animation: slideup;
+    animation-duration: 1s;
 }
 #journey h2 {
     color: var(--secondary);
     font-size: 30px;
 }
 #journey p {
-    color: var(--secondary-text);
+    color: var(--text);
     max-width: 700px;
     margin: 15px auto;
     line-height: 1.6;
 }
+.let {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--accent);
+    color: var(--text);
+    min-width: 500px;
+    height: auto;
+    justify-content: center;
+    padding: 20px 10px;
+    flex-wrap: nowrap;
+    border-radius: 10px;
+}
+
+.lets {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #contact {
     text-align: center;
     padding: 80px 20px;
@@ -224,4 +311,31 @@ footer p {
 }
 a .projects .skill {
     transition: 0.3s;
+}
+@keyframes slideup {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+#about, #skills, #projects, #journey, #contact {
+    animation: appear linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+
+@keyframes appear {
+    from{
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
